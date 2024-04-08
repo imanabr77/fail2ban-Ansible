@@ -1,0 +1,37 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Configure fail2ban
+      fail2ban:
+        ignoreip: 127.0.0.1/8
+        bantime: 10m
+        findtime: 10m
+        maxretry: 3
+        backend: auto
+        usedns: warn
+        destemail: root@localhost
+        sendername: Fail2Ban
+        banaction: iptables-multiport
+        mta: sendmail
+        protocol: tcp
+        chain: INPUT
+      become: true
+
+    - name: Configure fail2ban ssh section
+      fail2ban:
+        ssh_enabled: true
+        ssh_port: ssh
+        ssh_filter: sshd
+        ssh_logpath: %(sshd_log)s
+        ssh_backend: %(sshd_backend)s
+        ssh_maxretry: 6
+        ssh_bantime: 12h
+      become: true
+
+    - name: Restart fail2ban service
+      service:
+        name: fail2ban
+        state: restarted
+     become: true
+     listen: Restart fail2ban service

@@ -1,0 +1,29 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install fail2ban
+      package:
+        name: fail2ban
+        state: present
+      when: ansible_os_family == 'RedHat'
+      become: true
+
+    - name: Install fail2ban
+      apt:
+        name: fail2ban
+        state: present
+      when: ansible_os_family == 'Debian'
+      become: true
+
+    - name: Start fail2ban service
+      service:
+        name: fail2ban
+        state: started
+      become: true
+
+    - name: Enable fail2ban service
+      service:
+        name: fail2ban
+        enabled: true
+      become: true

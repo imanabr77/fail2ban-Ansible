@@ -1,0 +1,23 @@
+---
+# Default values for the fail2ban ansible module
+fail2ban_ignoreip: 127.0.0.1/8
+fail2ban_bantime: 10m
+fail2ban_findtime: 10m
+fail2ban_maxretry: 3
+fail2ban_backend: auto
+fail2ban_usedns: warn
+fail2ban_destemail: root@localhost
+fail2ban_sendername: Fail2Ban
+fail2ban_banaction: iptables-multiport
+fail2ban_mta: sendmail
+fail2ban_protocol: tcp
+fail2ban_chain: INPUT
+
+# Default values for the ssh section of the fail2ban ansible module
+fail2ban_ssh_enabled: true
+fail2ban_ssh_port: ssh
+fail2ban_ssh_filter: sshd
+fail2ban_ssh_logpath: %(sshd_log)s
+fail2ban_ssh_backend: %(sshd_backend)s
+fail2ban_ssh_maxretry: 6
+fail2ban_ssh_bantime: 12h
