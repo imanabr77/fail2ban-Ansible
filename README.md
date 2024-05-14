@@ -13,4 +13,4 @@ https://github.com/fail2ban/fail2ban
 2. **s
 
 3. **s**: s
-4. **Customization**: Customize logging configurations and define any additional fields (ExtraKeys) required for logging.
+4. **d
