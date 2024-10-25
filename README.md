@@ -8,9 +8,4 @@ https://github.com/fail2ban/fail2ban
 
 ## Usage 
 
-1. **s**:
-
-2. **s
-
-3. **s**: s
-4. **d
+1. **Add new hosts to inventory and run ansible-playbook**
